@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import apiClient from "../services/api";
+import { ProductivityDashboard } from "./ProductivityDashboard";
 import "./DashboardPage.css";
 
 type DashboardData = Record<string, string | number>;
+
+type ViewMode = "simple" | "productivity";
 
 const DashboardPage = () => {
   const { user, logout } = useAuth();
@@ -13,6 +16,7 @@ const DashboardPage = () => {
   );
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [viewMode, setViewMode] = useState<ViewMode>("productivity");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,14 +30,35 @@ const DashboardPage = () => {
       }
     };
 
-    fetchData();
-  }, []);
+    if (viewMode === "simple") {
+      fetchData();
+    }
+  }, [viewMode]);
+
+  // Default to productivity dashboard
+  if (viewMode === "productivity") {
+    return <ProductivityDashboard />;
+  }
 
   return (
     <div className="dashboard-page">
       <nav className="navbar">
         <div className="container">
           <h1 className="logo">TaskFlow</h1>
+          <div className="view-toggle">
+            <button 
+              onClick={() => setViewMode("simple")}
+              className={`toggle-btn ${viewMode === "simple" ? "active" : ""}`}
+            >
+              Simple
+            </button>
+            <button 
+              onClick={() => setViewMode("productivity")}
+              className={`toggle-btn ${(viewMode as string) === "productivity" ? "active" : ""}`}
+            >
+              Productivity
+            </button>
+          </div>
           <div className="user-info">
             <span>Welcome, {user?.username}</span>
             <button onClick={logout} className="button">
@@ -44,7 +69,7 @@ const DashboardPage = () => {
       </nav>
       <main className="container">
         <div className="header">
-          <h2>Dashboard</h2>
+          <h2>Simple Dashboard</h2>
           <Link to="/projects" className="button">
             View Projects
           </Link>
