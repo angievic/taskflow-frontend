@@ -1,0 +1,241 @@
+.time-spent-card {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.time-spent-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.time-spent-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+}
+
+.total-time {
+  font-size: 0.875rem;
+  color: #64748b;
+  font-weight: 500;
+  background-color: #f1f5f9;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.375rem;
+}
+
+.time-spent-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.time-spent-item {
+  display: grid;
+  grid-template-columns: 1fr 2fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.time-spent-item:hover {
+  background-color: #f8fafc;
+}
+
+.project-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.project-name {
+  font-weight: 500;
+  color: #374151;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.project-stats {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.task-count {
+  background-color: #e0e7ff;
+  color: #4f46e5;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+}
+
+.time-bar-container {
+  height: 0.5rem;
+  background-color: #f1f5f9;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.time-bar {
+  height: 100%;
+  border-radius: 0.25rem;
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+.time-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+.time-value {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1e293b;
+  text-align: right;
+  min-width: 4rem;
+}
+
+.time-spent-summary {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.summary-stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-value {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.no-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* Loading skeleton */
+.skeleton-title {
+  height: 1.25rem;
+  background: #e2e8f0;
+  border-radius: 0.25rem;
+  width: 60%;
+  animation: pulse 2s infinite;
+}
+
+.time-spent-item.skeleton {
+  background-color: #f8fafc;
+}
+
+.skeleton-project {
+  height: 1rem;
+  background: #e2e8f0;
+  border-radius: 0.25rem;
+  animation: pulse 2s infinite;
+}
+
+.skeleton-bar {
+  height: 0.5rem;
+  background: #e2e8f0;
+  border-radius: 0.25rem;
+  animation: pulse 2s infinite;
+}
+
+.skeleton-time {
+  height: 0.875rem;
+  background: #e2e8f0;
+  border-radius: 0.25rem;
+  width: 3rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .time-spent-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .time-spent-item {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .time-bar-container {
+    order: 2;
+  }
+  
+  .time-value {
+    order: 1;
+    text-align: left;
+    min-width: auto;
+  }
+  
+  .summary-stats {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .stat-item {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
