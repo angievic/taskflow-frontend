@@ -1,0 +1,135 @@
+.metrics-card {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.metrics-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.metric-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border-left: 4px solid;
+  background: #f8fafc;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.metric-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 12px -4px rgb(0 0 0 / 0.1);
+}
+
+.metric-item.blue {
+  border-left-color: #3b82f6;
+}
+
+.metric-item.green {
+  border-left-color: #10b981;
+}
+
+.metric-item.orange {
+  border-left-color: #f59e0b;
+}
+
+.metric-item.gray {
+  border-left-color: #6b7280;
+}
+
+.metric-item.purple {
+  border-left-color: #8b5cf6;
+}
+
+.metric-item.teal {
+  border-left-color: #14b8a6;
+}
+
+.metric-icon {
+  font-size: 1.5rem;
+  opacity: 0.8;
+}
+
+.metric-content {
+  flex: 1;
+}
+
+.metric-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.2;
+}
+
+.metric-label {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-top: 0.25rem;
+}
+
+/* Loading states */
+.metrics-grid.loading {
+  gap: 1rem;
+}
+
+.metric-item.skeleton {
+  background: #f1f5f9;
+  border-left-color: #e2e8f0;
+  animation: pulse 2s infinite;
+}
+
+.skeleton-text {
+  height: 0.75rem;
+  background: #e2e8f0;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem;
+  width: 60%;
+}
+
+.skeleton-number {
+  height: 1.25rem;
+  background: #e2e8f0;
+  border-radius: 0.25rem;
+  width: 40%;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .metric-item {
+    padding: 0.75rem;
+  }
+  
+  .metric-value {
+    font-size: 1.25rem;
+  }
+}
