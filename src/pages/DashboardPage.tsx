@@ -54,7 +54,7 @@ const DashboardPage = () => {
             </button>
             <button 
               onClick={() => setViewMode("productivity")}
-              className={`toggle-btn ${viewMode === "productivity" ? "active" : ""}`}
+              className={`toggle-btn ${(viewMode as string) === "productivity" ? "active" : ""}`}
             >
               Productivity
             </button>
